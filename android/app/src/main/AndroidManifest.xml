@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.cubo_app_v2">
+    package="com.example.cube_timer">
    <application
-        android:label="cubo_app_v2"
+        android:label="cube_timer"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

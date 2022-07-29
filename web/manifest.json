@@ -1,6 +1,6 @@
 {
-    "name": "cubo_app_v2",
-    "short_name": "cubo_app_v2",
+    "name": "cube_timer",
+    "short_name": "cube_timer",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

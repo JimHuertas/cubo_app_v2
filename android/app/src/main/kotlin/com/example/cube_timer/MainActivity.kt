@@ -1,4 +1,4 @@
-package com.example.cubo_app_v2
+package com.example.cube_timer
 
 import io.flutter.embedding.android.FlutterActivity
 
