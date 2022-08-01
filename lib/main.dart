@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
 
-import 'src/app.dart';
+import 'pages/home.dart';
 
 void main(){
-  runApp(const MyApp());
+  runApp( MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Cube Timer',
+      initialRoute: 'home',
+      home: HomePage(),
+      routes: {
+        'home': (_) => HomePage(),
+      },
+    );
+  }
 }
