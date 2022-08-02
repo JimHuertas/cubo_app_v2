@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
 Random random = Random();
 
@@ -29,7 +29,7 @@ class Scramble{
     for (var i=0; i < tam; i++) {
       String mov = _generarOneMovement3X3();
       if(tipo == 3){
-        String before = mov;
+        // String before = mov;
         combinacion += "$mov ";
         comb2[i] = mov;
       }
