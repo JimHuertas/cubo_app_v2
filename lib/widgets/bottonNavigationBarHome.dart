@@ -75,8 +75,8 @@ class _BottomNavigationBarHomeState extends State<BottomNavigationBarHome> {
       });
       widget.pageController.animateToPage(
         index,
-        duration: Duration(milliseconds: 500), 
-        curve: Curves.easeOut
+        duration: const Duration(milliseconds: 100), 
+        curve: Curves.bounceOut
       );
     });
   }

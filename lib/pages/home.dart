@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     List<Widget> views = [
-      cube(context, scramble),
+      Cube(context: context, scramble: scramble, deviceSize: 100),
       Container(color: Colors.red,),
       Container(color: Colors.yellow,)
     ];
@@ -38,6 +38,7 @@ class _HomePageState extends State<HomePage> {
         key: _scaffoldKey,
         backgroundColor: colorTheme,
         appBar: AppBarHome(//Own Widget
+          colorTheme: colorTheme,
           widthDevice: width,
           scaffoldKey: _scaffoldKey,
         ),
@@ -50,11 +51,6 @@ class _HomePageState extends State<HomePage> {
           pageController: pageController,
           selectedIndex: selectedIndex,
         ),//Own Widget
-        floatingActionButton: FloatingActionButton(
-          onPressed: ((){ 
-            setState(() {scramble.generarScramble(3);});
-          }),
-        ),
         drawer: DrawerHome(),
       ),
     );
@@ -63,6 +59,7 @@ class _HomePageState extends State<HomePage> {
 
 class ViewsModel with ChangeNotifier {
   int _selectedIndex = 0;
+  Scramble _scramble = Scramble();
   // final Color _colorSelected = Colors.white;
   // final Color _colorUnselected = Colors.red;
 
@@ -70,6 +67,12 @@ class ViewsModel with ChangeNotifier {
   set selectedIndex(int index){
     _selectedIndex = index;
     notifyListeners();
+  }
+
+  Scramble get scramble => _scramble;
+  set scrambe(Scramble scra){
+    _scramble = scra;
+    //notifyListeners();
   }
   
 }

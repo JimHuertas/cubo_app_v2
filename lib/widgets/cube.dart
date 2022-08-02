@@ -2,18 +2,42 @@ import 'package:cube_timer/models/scramble.dart';
 import 'package:flutter/material.dart';
 
 
+import 'package:flutter/material.dart';
 
-Widget cube(BuildContext context, Scramble scramble){
-  final double width = MediaQuery.of(context).size.width;
-  final double height = MediaQuery.of(context).size.height;
-  final double deviceSize = 100;//(width < height) ? width : height;  
-  return Column(
+
+class Cube extends StatefulWidget {
+  double deviceSize;
+  BuildContext context;
+  Scramble scramble;
+
+  Cube({
+    required this.deviceSize,
+    required this.context,
+    required this.scramble
+  });
+
+  @override
+  State<Cube> createState() => _CubeState();
+}
+
+class _CubeState extends State<Cube> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
-      _oneFace(deviceSize),
-      Text(scramble.combinacion, style: const TextStyle(color: Colors.white, fontSize: 25.0))
+      _oneFace(widget.deviceSize),
+      GestureDetector(
+        onTap: () {
+          setState(() {
+            widget.scramble.generarScramble(3);
+          });
+          print(widget.scramble.combinacion);
+        },
+        child: Text(widget.scramble.combinacion, style: const TextStyle(color: Colors.white, fontSize: 25.0)))
     ]
   );
+  }
 }
 
 Row _row3Faces(double deviceSize) {
