@@ -26,7 +26,7 @@ class _PageViewAnimatedState extends State<PageViewAnimated> {
     super.initState();
     widget.pageController.addListener(() {
       Provider.of<ViewsModel>(context, listen: false).selectedIndex = widget.selectedIndex;
-     });
+    });
   }
 
   @override
@@ -38,12 +38,12 @@ class _PageViewAnimatedState extends State<PageViewAnimated> {
   @override
   Widget build(BuildContext context) {
     return PageView(
+      physics: const ClampingScrollPhysics(),
       controller: widget.pageController,
       onPageChanged: (index) {
-        setState(() { 
-          widget.selectedIndex = index;
-        });
+        widget.selectedIndex = index;
       },
+      padEnds: false,
       children: widget.views,
     );
   }

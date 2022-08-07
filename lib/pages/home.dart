@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>(); //To Open Drawer with Appbar
   final Scramble scramble = Scramble();
-  final Color colorTheme = Colors.lightBlueAccent;
+  final Color colorTheme = Colors.black;
   
   @override
   Widget build(BuildContext context) {
@@ -48,6 +48,7 @@ class _HomePageState extends State<HomePage> {
           selectedIndex: selectedIndex,
         ),
         bottomNavigationBar: BottomNavigationBarHome(
+          colorTheme: colorTheme,
           pageController: pageController,
           selectedIndex: selectedIndex,
         ),//Own Widget

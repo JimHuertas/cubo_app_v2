@@ -8,8 +8,10 @@ class BottomNavigationBarHome extends StatefulWidget {
 
   int selectedIndex;
   PageController pageController;
+  Color colorTheme;
 
   BottomNavigationBarHome({
+    required this.colorTheme,
     required this.pageController,
     required this.selectedIndex
   });
@@ -19,18 +21,13 @@ class BottomNavigationBarHome extends StatefulWidget {
 }
 
 class _BottomNavigationBarHomeState extends State<BottomNavigationBarHome> {
-  
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(                                           
-          topRight: Radius.circular(20), 
-          topLeft: Radius.circular(20)
-        ),
-      ),
-      child: ClipRRect(        
+      color: widget.colorTheme,
+      height: 42,
+      child: ClipRRect(     
         borderRadius: const BorderRadius.only(                                           
           topLeft: Radius.circular(20.0),                                            
           topRight: Radius.circular(20.0),                                           
@@ -42,43 +39,63 @@ class _BottomNavigationBarHomeState extends State<BottomNavigationBarHome> {
 
     _navigationBarTimer() {
     return BottomNavigationBar(
+        //elevation: 0.0,
+        //type: BottomNavigationBarType.fixed,
         currentIndex: Provider.of<ViewsModel>(context).selectedIndex,
         onTap: _onItemTapped,
         backgroundColor: const Color.fromARGB(67, 76, 76, 76),
-        iconSize: 25.0,
+        iconSize: 24.0,
         unselectedItemColor: Colors.white70,
-        selectedItemColor: Colors.red,
+        selectedItemColor: Colors.white,
+        selectedFontSize: 0,
         showSelectedLabels: false,
         showUnselectedLabels: false,
-    
-        items: const <BottomNavigationBarItem>[
+
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.timer_outlined),
+            icon: Container(
+              height: 40,
+              width: 100,
+              margin: const EdgeInsets.all(0.0),
+              padding: const EdgeInsets.all(0.0),
+              child: Icon(Icons.timer_outlined)
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt),
+            icon: Container(
+              height: 40,
+              width: 100,
+              margin: const EdgeInsets.all(0.0),
+              padding: const EdgeInsets.all(0.0),
+              child: Icon(Icons.list_alt, )
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.timeline_sharp),
+            icon: Container(
+              height: 40,
+              width: 100,
+              margin: const EdgeInsets.all(0.0),
+              padding: const EdgeInsets.all(0.0),
+              child: Icon(Icons.timeline_sharp)),
             label: '',
           ),
         ],
     );
   }
   _onItemTapped(int index) {
-    setState(() {
       widget.selectedIndex = index;
       widget.pageController.addListener(() { 
         Provider.of<ViewsModel>(context, listen: false).selectedIndex = widget.selectedIndex;
       });
+      //print(widget.selectedIndex);
       widget.pageController.animateToPage(
         index,
         duration: const Duration(milliseconds: 100), 
         curve: Curves.bounceOut
       );
-    });
+  
   }
 }
 
