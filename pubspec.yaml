@@ -60,7 +60,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - lib/assets/icons/
+    - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -76,14 +76,14 @@ flutter:
   fonts:
     - family: Poppins
       fonts:
-        - asset: lib/fonts/Poppins-Regular.otf
-        - asset: lib/fonts/Poppins-Light.otf
-        - asset: lib/fonts/Poppins-SemiBold.otf
-        - asset: lib/fonts/Poppins-Bold.otf
+        - asset: fonts/Poppins-Regular.otf
+        - asset: fonts/Poppins-Light.otf
+        - asset: fonts/Poppins-SemiBold.otf
+        - asset: fonts/Poppins-Bold.otf
     - family: Quicksand
       fonts:
-        - asset: lib/fonts/Quicksand_Bold.ttf
-        - asset: lib/fonts/Quicksand_Medium.ttf
+        - asset: fonts/Quicksand_Bold.ttf
+        - asset: fonts/Quicksand_Medium.ttf
     # - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

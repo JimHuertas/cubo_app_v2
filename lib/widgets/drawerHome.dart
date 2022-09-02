@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:expandable/expandable.dart';
 
 class DrawerHome extends StatelessWidget {
-  Image iconOll = Image.asset('lib/assets/icons/oll_black.png',color: Colors.black54, fit: BoxFit.cover,width: 20,height: 20,);
-  Image iconPll = Image.asset('lib/assets/icons/pll_black.png',color: Colors.black54, fit: BoxFit.cover,width: 20,height: 20,);
-  Image headerDrawer = Image.asset('lib/assets/icons/menu_header.png');
+  Image iconOll = Image.asset('assets/icons/oll_black.png',color: Colors.black54, fit: BoxFit.cover,width: 20,height: 20,);
+  Image iconPll = Image.asset('assets/icons/pll_black.png',color: Colors.black54, fit: BoxFit.cover,width: 20,height: 20,);
+  Image headerDrawer = Image.asset('assets/icons/menu_header.png');
   Color colorTheme = Colors.black54;
 
   @override

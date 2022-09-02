@@ -5,7 +5,7 @@ import 'package:cube_timer/models/scramble.dart';
 
 import 'package:cube_timer/widgets/pageViewAnimatedHome.dart';
 import 'package:cube_timer/widgets/appbarHome.dart';
-import 'package:cube_timer/widgets/bottonNavigationBarHome.dart';
+import 'package:cube_timer/widgets/bottomnavigationbar_home.dart';
 import 'package:cube_timer/widgets/drawerHome.dart';
 import 'package:provider/provider.dart';
 

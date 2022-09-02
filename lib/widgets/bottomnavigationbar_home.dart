@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, must_be_immutable
+
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -5,7 +7,6 @@ import '../pages/home.dart';
 
 
 class BottomNavigationBarHome extends StatefulWidget {
-
   int selectedIndex;
   PageController pageController;
   Color colorTheme;
@@ -24,16 +25,19 @@ class _BottomNavigationBarHomeState extends State<BottomNavigationBarHome> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: widget.colorTheme,
-      height: 42,
-      child: ClipRRect(     
-        borderRadius: const BorderRadius.only(                                           
-          topLeft: Radius.circular(20.0),                                            
-          topRight: Radius.circular(20.0),                                           
-        ),
-        child: _navigationBarTimer()
-      )
+    return SafeArea(
+      left: true,
+      child: Container(
+        color: widget.colorTheme,
+        height: 42,
+        child: ClipRRect(     
+          borderRadius: const BorderRadius.only(                                           
+            topLeft: Radius.circular(20.0),                                            
+            topRight: Radius.circular(20.0),                                           
+          ),
+          child: _navigationBarTimer()
+        )
+      ),
     );
   }
 
@@ -54,6 +58,7 @@ class _BottomNavigationBarHomeState extends State<BottomNavigationBarHome> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Container(
+              //color: Colors.red,
               height: 40,
               width: 100,
               margin: const EdgeInsets.all(0.0),

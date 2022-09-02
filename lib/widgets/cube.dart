@@ -2,9 +2,6 @@ import 'package:cube_timer/models/scramble.dart';
 import 'package:flutter/material.dart';
 
 
-import 'package:flutter/material.dart';
-
-
 class Cube extends StatefulWidget {
   double deviceSize;
   BuildContext context;
