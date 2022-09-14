@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-import 'package:provider/provider.dart';
 import '../pages/home.dart';
+import 'package:provider/provider.dart';
+import '../providers/views_provider.dart';
 
 
 class PageViewAnimated extends StatefulWidget {
   
   List<Widget> views;
-  int selectedIndex;
   PageController pageController;
+  
 
   PageViewAnimated({
     required this.views,
     required this.pageController,
-    required this.selectedIndex
   });
   
   @override
@@ -21,27 +21,15 @@ class PageViewAnimated extends StatefulWidget {
 }
 
 class _PageViewAnimatedState extends State<PageViewAnimated> {
-  @override
-  void initState() {
-    super.initState();
-    widget.pageController.addListener(() {
-      Provider.of<ViewsModel>(context, listen: false).selectedIndex = widget.selectedIndex;
-    });
-  }
-
-  @override
-  void dispose() {
-    widget.pageController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
+
     return PageView(
       physics: const ClampingScrollPhysics(),
       controller: widget.pageController,
       onPageChanged: (index) {
-        widget.selectedIndex = index;
+        context.read<ViewsModel>().changePage(index);
       },
       padEnds: false,
       children: widget.views,

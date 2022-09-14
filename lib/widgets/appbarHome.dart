@@ -1,7 +1,9 @@
-import 'package:cube_timer/pages/home.dart';
-import 'package:cube_timer/widgets/alertDialogNewCategory.dart';
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
+
+import 'package:cube_timer/widgets/alertDialogNewCategory.dart';
+import '../providers/views_provider.dart';
 
 
 class AppBarHome extends StatelessWidget with PreferredSizeWidget{
@@ -23,13 +25,39 @@ class AppBarHome extends StatelessWidget with PreferredSizeWidget{
         alignment: AlignmentDirectional.centerEnd,
         margin: const EdgeInsets.only(left: 10.0, right: 10.0),
         child: AppBar(
-          title: Container(
-            width: double.infinity,
-            color: Colors.amber,
-            child: const Text('3x3')
+          title: GestureDetector(
+            onTap: (){
+              print('aqui la pantalla');
+            },
+            child: Center(
+              child: Container(
+                padding: const EdgeInsets.only(left:20),
+                margin: const EdgeInsets.only(left: 50, right: 20),
+                width: 250,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Column(
+                      children: const <Widget>[
+                        Text('Cubo 3X3', style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0,
+                        )),
+                        Text('normal', style: TextStyle(
+                          fontSize: 13.0,
+                        ))
+                      
+                      ],
+                    ),
+                    const SizedBox(width: 5),
+                    const Icon(Icons.arrow_drop_down)
+                  ],
+                )
+              ),
+            ),
           ),   
           actions: [
-            (Provider.of<ViewsModel>(context).selectedIndex != 0)
+            (context.watch<ViewsModel>().selectedIndex != 0)
             ? SizedBox(
               width: 40.0,
               child: IconButton(
@@ -53,7 +81,7 @@ class AppBarHome extends StatelessWidget with PreferredSizeWidget{
           backgroundColor: const Color.fromARGB(67, 76, 76, 76),
           leadingWidth: 40.0,
           leading: Container(
-            padding: EdgeInsets.only(left: 10),
+            padding: const EdgeInsets.only(left: 10),
             child: IconButton(
               icon: const Icon(Icons.settings_outlined,color: Colors.white, 
               size: 23.0,), 

@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 import '../pages/home.dart';
+import '../providers/views_provider.dart';
 
 
 class BottomNavigationBarHome extends StatefulWidget {
-  int selectedIndex;
+
   PageController pageController;
   Color colorTheme;
 
   BottomNavigationBarHome({
     required this.colorTheme,
     required this.pageController,
-    required this.selectedIndex
   });
 
   @override
@@ -25,6 +25,7 @@ class _BottomNavigationBarHomeState extends State<BottomNavigationBarHome> {
 
   @override
   Widget build(BuildContext context) {
+    
     return SafeArea(
       left: true,
       child: Container(
@@ -45,7 +46,7 @@ class _BottomNavigationBarHomeState extends State<BottomNavigationBarHome> {
     return BottomNavigationBar(
         //elevation: 0.0,
         //type: BottomNavigationBarType.fixed,
-        currentIndex: Provider.of<ViewsModel>(context).selectedIndex,
+        currentIndex: context.watch<ViewsModel>().selectedIndex,
         onTap: _onItemTapped,
         backgroundColor: const Color.fromARGB(67, 76, 76, 76),
         iconSize: 24.0,
@@ -83,18 +84,14 @@ class _BottomNavigationBarHomeState extends State<BottomNavigationBarHome> {
               width: 100,
               margin: const EdgeInsets.all(0.0),
               padding: const EdgeInsets.all(0.0),
-              child: Icon(Icons.timeline_sharp)),
+              child: const Icon(Icons.timeline_sharp)),
             label: '',
           ),
         ],
     );
   }
-  _onItemTapped(int index) {
-      widget.selectedIndex = index;
-      widget.pageController.addListener(() { 
-        Provider.of<ViewsModel>(context, listen: false).selectedIndex = widget.selectedIndex;
-      });
-      //print(widget.selectedIndex);
+  _onItemTapped(index) {
+      context.read<ViewsModel>().changePage(index);
       widget.pageController.animateToPage(
         index,
         duration: const Duration(milliseconds: 100), 
