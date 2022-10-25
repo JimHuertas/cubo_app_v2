@@ -10,6 +10,9 @@
 .svn/
 migrate_working_dir/
 
+#Just for testing purpose
+prueba.dart
+
 # IntelliJ related
 *.iml
 *.ipr

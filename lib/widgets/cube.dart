@@ -84,8 +84,6 @@ class _CubeState extends State<Cube> {
 
 }
 
-
-
 Column _cube(double deviceSize){
   return Column(
       children: <Widget>[

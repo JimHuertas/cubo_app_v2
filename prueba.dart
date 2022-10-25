@@ -95,3 +95,20 @@ class Matrix {
     }
   }
 }
+
+void main(List<String> args) {
+  Matrix matrix = Matrix(Type.cube7x7, 1);
+  int cont = 0;
+  for(int i=0; i<matrix.length!; i++){
+    for(int j=0; j<matrix.length!; j++){
+      cont += 1;
+      matrix[i][j] = cont;
+    }
+  }
+
+  matrix.rotarMatrizAntihorario();
+  matrix.printMatrix();
+
+  matrix.rotarMatrizHorario();
+  matrix.printMatrix();
+}

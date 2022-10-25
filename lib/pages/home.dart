@@ -1,3 +1,5 @@
+import 'package:cube_timer/models/matrix.dart';
+import 'package:cube_timer/widgets/test_cube.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cube_timer/models/scramble.dart';
@@ -7,6 +9,7 @@ import 'package:cube_timer/widgets/pageViewAnimatedHome.dart';
 import 'package:cube_timer/widgets/appbarHome.dart';
 import 'package:cube_timer/widgets/bottomnavigationbar_home.dart';
 import 'package:cube_timer/widgets/drawerHome.dart';
+import '../models/matrix_cube.dart';
 import '../providers/views_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -26,8 +29,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     List<Widget> views = [
       Cube(context: context, scramble: scramble, deviceSize: 100),
+      CubeTest(matr:  MatrixCube(Type.cube3x3) , n: nCubeType[Type.cube3x3]!),
       Container(color: Colors.red,),
-      Container(color: Colors.yellow,)
     ];
     
     PageController pageController = PageController();
