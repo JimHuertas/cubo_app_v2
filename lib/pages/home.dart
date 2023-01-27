@@ -28,14 +28,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     List<Widget> views = [
-      Cube(context: context, scramble: scramble, deviceSize: 100),
+      Cube(context: context, scramble: scramble, deviceSize: 40),
       CubeTest(matr:  MatrixCube(Type.cube3x3) , n: nCubeType[Type.cube3x3]!),
-      Container(color: Colors.red,),
+      Container(color: Colors.black,),
     ];
     
     PageController pageController = PageController();
     final double width = MediaQuery.of(context).size.width;
-    final double height = MediaQuery.of(context).size.height;
+    //final double height = MediaQuery.of(context).size.height;
     return  MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ViewsModel())

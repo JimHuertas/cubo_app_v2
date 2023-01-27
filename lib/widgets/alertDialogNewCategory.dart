@@ -26,7 +26,9 @@ Widget _buildAlertDialog(BuildContext context){
       builder:(context){
         return Container(
           color: Colors.red,
-          width: MediaQuery.of(context).size.width-50,
+          width: (MediaQuery.of(context).size.width < 400) 
+              ? MediaQuery.of(context).size.width-50 
+              : 400,
           height: 300,
           child: SingleChildScrollView(
             child: ListBody(

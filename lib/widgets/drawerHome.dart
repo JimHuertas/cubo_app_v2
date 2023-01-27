@@ -18,17 +18,20 @@ class DrawerHome extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           SafeArea(
-            top: false,
-            bottom: false,
+            left: false,
             child: Container(
               height: 178,
               child: headerDrawer,
             ),
           ),
-          _listTileDrawer(
-            Icons.timer_outlined,
-            'Cronómetro'
+          Container(
+            padding: EdgeInsets.all(0),
+            child: _listTileDrawer(
+              Icons.timer_outlined,
+              'Cronómetro'
+            ),
           ),
+          
           _expandible(
             Icons.control_camera_outlined,
             'Entrenamiento'
@@ -74,24 +77,29 @@ class DrawerHome extends StatelessWidget {
   }
 
   _listTileDrawer(IconData icon, String title) {
-    return ListTile(
-      title: Text(
-        title, 
-        style: const TextStyle(
-          fontFamily: 'Arial',
-          color: Colors.black87, 
-          fontSize: 15.0)
-        ),
-      leading: Icon(icon, color: Colors.black54),
-      visualDensity: const VisualDensity(vertical: -2),
-      onTap: (){},
+    return Container(
+      color: Colors.red,
+      child: ListTile(
+        title: Text(
+          title, 
+          style: const TextStyle(
+            fontFamily: 'Arial',
+            color: Colors.black87,
+            fontSize: 15.0)
+          ),
+        leading: Icon(icon, color: Colors.black54),
+        dense: true,
+        visualDensity: const VisualDensity(horizontal: -4),
+        //visualDensity: const VisualDensity(vertical: -2),
+        onTap: (){},
+      ),
     );
   }
 
   _expandible(IconData iconTitle, String title){
     return ExpandablePanel(
       header: _listItem(iconTitle, title),
-      collapsed: Container(),//Text('\$crim', softWrap: true, maxLines: 2, overflow: TextOverflow.ellipsis,),
+      collapsed: Container(), //Text('\$crim', softWrap: true, maxLines: 2, overflow: TextOverflow.ellipsis,),
       expanded: Column(
         children:  <Widget>[
           _listItemExpandible('OLL', iconOll),
@@ -105,17 +113,17 @@ class DrawerHome extends StatelessWidget {
   _listItemExpandible(String title, Image icon) {
     return ListTile(
       contentPadding: const EdgeInsets.only(left: 33.0),
-          title: Text(
-            title, 
-            style: const TextStyle(
-            fontFamily: 'Arial',
-            color: Colors.black54, 
-            fontSize: 15.0)
-          ),
-          leading: icon,
-          visualDensity: const VisualDensity(vertical: -2),
-          onTap: (){},
-        );
+      title: Text(
+        title,
+        style: const TextStyle(
+        fontFamily: 'Arial',
+        color: Colors.black54, 
+        fontSize: 15.0)
+      ),
+      leading: icon,
+      visualDensity: const VisualDensity(vertical: -2),
+      onTap: (){},
+    );
   }
 
   _listItem(dynamic icon, String name) {
