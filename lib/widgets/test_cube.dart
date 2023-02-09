@@ -18,7 +18,7 @@ class _CubeTestState extends State<CubeTest> {
   @override
   Widget build(BuildContext context) {
   return Container(
-    padding: EdgeInsets.only(top: 20, left:15, right: 15, bottom: 10),
+    padding: const EdgeInsets.only(top: 20, left:15, right: 15, bottom: 10),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -27,7 +27,7 @@ class _CubeTestState extends State<CubeTest> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               const Text('asd', style: TextStyle(fontSize: 18, color: Colors.white)),
-              _generateCube(),
+              _generateCube(3),
               const Text('data', style: TextStyle(fontSize: 18, color: Colors.white))
             ],
           ),
@@ -36,17 +36,17 @@ class _CubeTestState extends State<CubeTest> {
     );
   }
 
-  _generateCube(){
+  _generateCube(double width){
     return GestureDetector(
       onTap: (){print("aqui gesto xd");},
       child: Row(
         children: <Widget>[
           _columOfFace(false),
-          const SizedBox(width: 3),
+          SizedBox(width: width),
           _columOfFace(true),
-          const SizedBox(width: 3),
+          SizedBox(width: width),
           _columOfFace(false),
-          const SizedBox(width: 3),
+          SizedBox(width: width),
           _columOfFace(false),
         ],
       ),
@@ -67,5 +67,26 @@ class _CubeTestState extends State<CubeTest> {
 
   _unitOfFace(Color color){
     return Container(color: color, width: 20, height: 20);
+  }
+
+  ///Return a respective color of a number in the matrixCube class
+  ///0 -> White, 1 -> Orange, 2 -> Green, 3 -> Red, 4 -> Blue, 5 -> Yellow, 
+  Color _numToColor(int num){
+    switch (num) {
+      case 0:
+        return Colors.white;
+      case 1:
+        return Colors.orange;
+      case 2:
+        return Colors.green;
+      case 3:
+        return Colors.red;
+      case 4:
+        return Colors.blue;
+      case 5:
+        return Colors.yellow;
+      default:
+        return Colors.blue;
+    }
   }
 }

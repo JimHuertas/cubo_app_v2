@@ -21,8 +21,8 @@ class Matrix {
   Type? type;
   int? length;
 
-  Matrix(Type type_cube, int element){
-    type= type_cube;
+  Matrix(Type typeCube, int element){
+    type= typeCube;
     _matrix = List.generate(nCubeType[type]!, (index) => []);
     for(var i=0; i<nCubeType[type]!; i++){
       List<int> list = List.generate(nCubeType[type]!, (index) => element);
@@ -156,7 +156,7 @@ class MatrixCube{
         str3 += " ";
         str4 += " ";
       }
-      result = str1 + "\t" + str2 + "\t" + str3 + "\t" + str4;
+      result = "$str1 \t $str2 \t $str3 \t $str4";
       print(result);
       str1 = "";
       str2 = "";

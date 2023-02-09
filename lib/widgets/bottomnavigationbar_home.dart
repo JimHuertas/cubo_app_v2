@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
-import '../pages/home.dart';
 import '../providers/views_provider.dart';
 
 

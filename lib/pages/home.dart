@@ -1,9 +1,11 @@
-import 'package:cube_timer/models/matrix.dart';
-import 'package:cube_timer/widgets/test_cube.dart';
+import 'package:cube_timer/providers/category_cube_provider.dart';
 import 'package:flutter/material.dart';
 
-import 'package:cube_timer/models/scramble.dart';
+import 'package:provider/provider.dart';
 
+import 'package:cube_timer/models/matrix.dart';
+import 'package:cube_timer/models/scramble.dart';
+import 'package:cube_timer/widgets/test_cube.dart';
 import 'package:cube_timer/widgets/cube.dart';
 import 'package:cube_timer/widgets/pageViewAnimatedHome.dart';
 import 'package:cube_timer/widgets/appbarHome.dart';
@@ -11,7 +13,6 @@ import 'package:cube_timer/widgets/bottomnavigationbar_home.dart';
 import 'package:cube_timer/widgets/drawerHome.dart';
 import '../models/matrix_cube.dart';
 import '../providers/views_provider.dart';
-import 'package:provider/provider.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -22,23 +23,18 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>(); //To Open Drawer with Appbar
-  final Scramble scramble = Scramble();
   final Color colorTheme = Colors.black;
-  
+  final Scramble scramble = Scramble();
   @override
   Widget build(BuildContext context) {
-    List<Widget> views = [
-      Cube(context: context, scramble: scramble, deviceSize: 40),
-      CubeTest(matr:  MatrixCube(Type.cube3x3) , n: nCubeType[Type.cube3x3]!),
-      Container(color: Colors.black,),
-    ];
     
     PageController pageController = PageController();
     final double width = MediaQuery.of(context).size.width;
     //final double height = MediaQuery.of(context).size.height;
     return  MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ViewsModel())
+        ChangeNotifierProvider(create: (_) => ViewsModel()),
+        ChangeNotifierProvider(create: (_) => CategoryCubeModel())
       ],
       child: Scaffold(
         key: _scaffoldKey,
@@ -47,9 +43,10 @@ class _HomePageState extends State<HomePage> {
           colorTheme: colorTheme,
           widthDevice: width,
           scaffoldKey: _scaffoldKey,
+          //typeCube: Type.values,
         ),
         body: PageViewAnimated(
-          views: views,
+          //views: views,
           pageController: pageController,
         ),
         bottomNavigationBar: BottomNavigationBarHome(

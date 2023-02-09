@@ -1,12 +1,13 @@
 enum Type{
-    cube2x2,
-    cube3x3,
-    cube4x4,
-    cube5x5,
-    cube6x6,
-    cube7x7
+  cube2x2,
+  cube3x3,
+  cube4x4,
+  cube5x5,
+  cube6x6,
+  cube7x7
 }
 
+///Given a Type enum(Type.cube2x2, Type.cube3x3...) return an int from the respect type(2,3...)
 Map<Type, int> nCubeType = {
   Type.cube2x2:2,
   Type.cube3x3:3,
@@ -16,13 +17,22 @@ Map<Type, int> nCubeType = {
   Type.cube7x7:7
 };
 
+Map<int,Type> intToType = {
+  2:Type.cube2x2,
+  3:Type.cube3x3,
+  4:Type.cube4x4,
+  5:Type.cube5x5,
+  6:Type.cube6x6,
+  7:Type.cube7x7
+};
+
 class Matrix {
   List<List<int>> _matrix = List.generate(1, (i) => []);
   Type? type;
   int? length;
 
-  Matrix(Type type_cube, int element){
-    type= type_cube;
+  Matrix(Type typeCube, int element){
+    type= typeCube;
     _matrix = List.generate(nCubeType[type]!, (index) => []);
     for(var i=0; i<nCubeType[type]!; i++){
       List<int> list = List.generate(nCubeType[type]!, (index) => element);
