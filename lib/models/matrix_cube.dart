@@ -32,6 +32,82 @@ class MatrixCube{
     }
   }
 
+  int numPos(int pos, int i, int j) => cube[pos][i][j];
+
+  void scramble(List<String> scr){
+    for (String i in scr) {
+      switch (i) {
+        case "R":
+          moveR();
+          break;
+        case "R'":
+          moveRPrime();
+          break;
+        case "2R":
+          moveR();
+          moveR();
+          break;
+        case "L":
+          moveL();
+          break;
+        case "L'":
+          moveLPrime();
+          break;
+        case "2L":
+          moveL();
+          moveL();
+          break;
+        case "U":
+          moveU();
+          break;
+        case "U'":
+          moveUPrime();
+          break;
+        case "2U":
+          moveU();
+          moveU();
+          break;
+        case "D":
+          moveD();
+          break;
+        case "D'":
+          moveDPrime();
+          break;
+        case "2D":
+          moveD();
+          moveD();
+          break;
+        case "F":
+          moveF();
+          break;
+        case "F'":
+          moveFPrime();
+          break;
+        case "2F":
+          moveF();
+          moveF();
+          break;
+        case "B":
+          moveB();
+          break;
+        case "B'":
+          moveBPrime();
+          break;
+        case "2B":
+          moveB();
+          moveB();
+          break;
+        default:
+          print("no hay este caso $i");
+          break;
+      }
+    }
+    printCube();
+  }
+  void cleanScramble(){
+    cube = originalCube;
+  }
+
   void printCube(){
     cube[0].printMatrix();
     Matrix aux = cube[1];
@@ -205,10 +281,10 @@ void moveFPrime(){
   List<int> auxSwap = [];
   for (var i = 0; i < nType!; i++) {
     auxSwap.add(cube[0][nType!-1][i]);
-    cube[0][nType!-1][i] = cube[1][i][nType!-1];
-    cube[1][i][nType!-1] = cube[5][0][i];
-    cube[5][0][i] = cube[3][i][0];
-    cube[3][i][0] = auxSwap[i];
+    cube[0][nType!-1][i] = cube[3][i][0];
+    cube[3][i][0] = cube[5][0][i];
+    cube[5][0][i] = cube[1][i][nType!-1];
+    cube[1][i][nType!-1] = auxSwap[i];
   }
 }
 

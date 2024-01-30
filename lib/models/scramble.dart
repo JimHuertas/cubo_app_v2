@@ -34,6 +34,28 @@ class Scramble{
         comb2[i] = mov;
       }
     }
+    // only for test
+    combinacion = "U2 L' F2 L2 D2 B2 D L2 B2 U F2 D B U L2 U' L' D F";
+    comb2.clear();
+    comb2.add("2U");
+    comb2.add("L'");
+    comb2.add("2F");
+    // comb2.add("2L");
+    // comb2.add("2D");
+    // comb2.add("2B");
+    // comb2.add("D");
+    // comb2.add("2L");
+    // comb2.add("2B");
+    // comb2.add("U");
+    // comb2.add("2F");
+    // comb2.add("D");
+    // comb2.add("B");
+    // comb2.add("U");
+    // comb2.add("2L");
+    // comb2.add("U'");
+    // comb2.add("L'");
+    // comb2.add("D");
+    // comb2.add("F");
   }
 
   String _generarOneMovement3X3(){

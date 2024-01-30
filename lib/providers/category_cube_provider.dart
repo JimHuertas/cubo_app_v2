@@ -8,14 +8,17 @@ import 'package:cube_timer/models/scramble.dart';
 class CategoryCubeModel with ChangeNotifier{
   Scramble scr = Scramble();
   MatrixCube cube = MatrixCube(Type.cube3x3);
+  MatrixCube? originalCube;
   String scramble = "No existe";
   String? category;
   String? mode;
 
   CategoryCubeModel(){
+    originalCube = MatrixCube(Type.cube3x3);
     category = "Cubo 3x3";
     mode = "normal";
     scr.generarScramble(3);
+    cube.scramble(scr.comb2);
     scramble = scr.combinacion;
   }
 
@@ -31,8 +34,10 @@ class CategoryCubeModel with ChangeNotifier{
   }
 
   changeScramble(int tipo) {
+    cube = MatrixCube(Type.cube3x3);
     scr.generarScramble(tipo);
     scramble = scr.combinacion;
+    cube.scramble(scr.comb2);
     notifyListeners();
   }
 

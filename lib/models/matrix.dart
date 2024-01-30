@@ -76,7 +76,6 @@ class Matrix {
         _matrix[k][j] = swapAux;
       }
     }
-    print("");
     for(int i=1;i<(N/2.0).round()+1;i++){
         for(int j=i;j<N-i;j++){
           swapAux = _matrix[j][i-1];

@@ -7,7 +7,7 @@ import '../providers/views_provider.dart';
 import 'package:cube_timer/providers/category_cube_provider.dart';
 
 
-class AppBarHome extends StatefulWidget with PreferredSizeWidget{
+class AppBarHome extends StatefulWidget implements PreferredSizeWidget{
   final double widthDevice;
   final GlobalKey<ScaffoldState> scaffoldKey;
   final Color colorTheme;

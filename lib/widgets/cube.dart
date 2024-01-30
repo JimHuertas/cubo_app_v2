@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:cube_timer/models/scramble.dart';
-import 'package:cube_timer/providers/category_cube_provider.dart';
-import 'package:provider/provider.dart';
 
 
 class Cube extends StatefulWidget {
-  double deviceSize;
+  final double deviceSize;
   //BuildContext context;
-  Scramble scramble;
+  final Scramble scramble;
 
   Cube({
     required this.deviceSize,
@@ -28,16 +26,16 @@ class _CubeState extends State<Cube> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          GestureDetector(
-            onTap: () {
-              context.read<CategoryCubeModel>().changeScramble(3);
-            },
-            //context.watch<CategoryCubeModel>().scr!
-            child: Text(
-              context.watch<CategoryCubeModel>().scramble, 
-              style: const TextStyle(color: Colors.white, fontSize: 25.0)
-            )
-          ),
+          // GestureDetector(
+          //   onTap: () {
+          //     context.read<CategoryCubeModel>().changeScramble(3);
+          //   },
+          //   //context.watch<CategoryCubeModel>().scr!
+          //   child: Text(
+          //     context.watch<CategoryCubeModel>().scramble, 
+          //     style: const TextStyle(color: Colors.white, fontSize: 25.0)
+          //   )
+          // ),
           _cube(widget.deviceSize),
         ]
       ),

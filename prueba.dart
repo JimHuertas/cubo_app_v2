@@ -30,12 +30,13 @@ class Matrix {
     }
     length = _matrix.length;
   }
-  
+
   void printMatrix(){
     String aux = "";
     for(var i=0; i<_matrix.length; i++){
       for(var j=0; j<_matrix[i].length; j++){
         aux += _matrix[i][j].toString();
+        // aux += "($i$j) ";
         aux += " ";
       }
       print(aux);
@@ -95,6 +96,8 @@ class Matrix {
     }
   }
 }
+
+
 /*
 List of matrix that represent face cubes 
   - 0th (Up)
@@ -128,8 +131,86 @@ class MatrixCube{
     }
   }
 
+  void changeNum(int pos, int i, int j, int nuevo){cube[pos][i][j] = nuevo;}
+  int numPos(int pos, int i, int j) => cube[pos][i][j];
+
+  void scramble(List<String> scr){
+    for (String i in scr) {
+      switch (i) {
+        case "R":
+          moveR();
+          break;
+        case "R'":
+          moveRPrime();
+          break;
+        case "2R":
+          moveR();
+          moveR();
+          break;
+        case "L":
+          moveL();
+          break;
+        case "L'":
+          moveLPrime();
+          break;
+        case "2L":
+          moveL();
+          moveL();
+          break;
+        case "U":
+          moveU();
+          break;
+        case "U'":
+          moveUPrime();
+          break;
+        case "2U":
+          moveU();
+          moveU();
+          break;
+        case "D":
+          moveD();
+          break;
+        case "D'":
+          moveDPrime();
+          break;
+        case "2D":
+          moveD();
+          moveD();
+          break;
+        case "F":
+          moveF();
+          break;
+        case "F'":
+          moveFPrime();
+          break;
+        case "2F":
+          moveF();
+          moveF();
+          break;
+        case "B":
+          moveB();
+          break;
+        case "B'":
+          moveBPrime();
+          break;
+        case "2B":
+          moveB();
+          moveB();
+          break;
+        default:
+          print("no hay este caso $i");
+          break;
+      }
+    }
+    printCube();
+  }
+  void cleanScramble(){
+    cube = originalCube;
+  }
+
   void printCube(){
     cube[0].printMatrix();
+    print("");
     Matrix aux = cube[1];
     int? nType = nCubeType[n];
     String str1="";
@@ -140,15 +221,19 @@ class MatrixCube{
       String result = "";
       for (var j=0; j<nType; j++) {
         str1 += aux[i][j].toString();
+        // str1 += "($i$j)";
 
         aux = cube[2];
         str2 += aux[i][j].toString();
+        // str2 += "($i$j)";
 
         aux = cube[3];
         str3 += aux[i][j].toString();
+        // str3 += "($i$j)";
 
         aux = cube[4];
         str4 += aux[i][j].toString();
+        // str4 += "($i$j)";
 
         aux = cube[1];
         str1 += " ";
@@ -156,13 +241,14 @@ class MatrixCube{
         str3 += " ";
         str4 += " ";
       }
-      result = "$str1 \t $str2 \t $str3 \t $str4";
+      result = "$str1 $str2 $str3 $str4";
       print(result);
       str1 = "";
       str2 = "";
       str3 = "";
       str4 = "";
     }
+    print("");
     cube[5].printMatrix();
   }
 
@@ -301,10 +387,10 @@ void moveFPrime(){
   List<int> auxSwap = [];
   for (var i = 0; i < nType!; i++) {
     auxSwap.add(cube[0][nType!-1][i]);
-    cube[0][nType!-1][i] = cube[1][i][nType!-1];
-    cube[1][i][nType!-1] = cube[5][0][i];
-    cube[5][0][i] = cube[3][i][0];
-    cube[3][i][0] = auxSwap[i];
+    cube[0][nType!-1][i] = cube[3][i][0];
+    cube[3][i][0] = cube[5][0][i];
+    cube[5][0][i] = cube[1][i][nType!-1];
+    cube[1][i][nType!-1] = auxSwap[i];
   }
 }
 
@@ -320,6 +406,14 @@ void moveFPrime(){
       cube[4][i][nType!-1] = cube[5][i][0];
       cube[5][i][0] = cube[2][i][0];
       cube[2][i][0] = auxSwap[i];
+    }
+    for (int i = 0; i < (nType!/2).floor(); i++) {
+      int aux = cube[0][i][0];
+      cube[0][i][0] = cube[0][nType!-i-1][0]; 
+      cube[0][nType!-i-1][0] = aux;
+
+      cube[4][i][nType!] = cube[0][nType!-i-1][0]; 
+      cube[0][i][0] = cube[0][nType!-i-1][0]; 
     }
   }
   void moveLPrime(){
@@ -341,8 +435,33 @@ void moveFPrime(){
 void main(List<String> args) {
   MatrixCube cube = MatrixCube(Type.cube3x3);
   // cube.moveLPrime();
-  cube.moveUPrime();
+  // cube.moveUPrime();
+  int cont = 1;
+  
+  for (var k = 0; k < 6; k++) {
+    for (var i = 0; i < cube.nType!; i++) {
+      for (var j = 0; j < cube.nType!; j++) {
+        cube.changeNum(k, i, j, cont);
+        cont++;
+      }
+    }
+  }
+  cube.moveL();
   cube.printCube();
-
+  // while(true){
+  //   String? s = stdin.readLineSync();
+  //   if (s != null){
+  //     int n = int.parse(s);
+  //     if(n == 0){
+  //       cube.moveF();
+  //       print("");
+  //       cube.printCube;
+  //     }else{
+  //       break;
+  //     }
+  //   } else{
+  //     break;
+  //   }
+  // }
 
 }

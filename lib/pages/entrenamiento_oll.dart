@@ -8,7 +8,7 @@ class OLLTrainingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('Hola Mundo'),
+      child: Text('oll entrenamiento'),
      );
   }
 }
